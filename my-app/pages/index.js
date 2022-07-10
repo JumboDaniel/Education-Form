@@ -1,6 +1,10 @@
 import Head from "next/head";
+import { useAppContext } from "../context/state";
+import { useRouter } from 'next/router'
 
 export default function Home() {
+  const { name, setName } = useAppContext();
+  const router = useRouter();
   return (
     <div className="container">
       <Head>
@@ -12,10 +16,8 @@ export default function Home() {
 
       <div className="user-container">
         <h1>Type your name and click "Enter" to begin</h1>
-        <input />
-        <button>
-          Enter
-        </button>
+        <input required={true} onChange={(e) => setName(e.target.value)} />
+        <button onClick={() => router.push('/education')}>Enter</button>
       </div>
 
       <style jsx>{`
@@ -33,19 +35,19 @@ export default function Home() {
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          gap : 1em;
+          gap: 1em;
         }
         .user-container input {
-          height:2.3rem;
-          width:100%;
+          height: 2.3rem;
+          width: 100%;
         }
         .user-container button {
-          height:2.3rem;
-          width:25%;
+          height: 2.3rem;
+          width: 25%;
           font-size: 1em;
           font-weight: 400;
         }
-        h1{
+        h1 {
           font-size: 1.5em;
           font-weight: 400;
         }
