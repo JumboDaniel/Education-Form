@@ -1,32 +1,26 @@
 import * as React from "react";
-import {useState} from "react";
+import { useState } from "react";
 import { useAppContext } from "../context/state";
 import Modal from "react-modal";
-
+import FormInput from "../components/input";
 
 const customStyles = {
   content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
   },
 };
 
 const Education = () => {
   const { name } = useAppContext();
-  let subtitle;
   const [modalIsOpen, setIsOpen] = useState(false);
 
   function openModal() {
     setIsOpen(true);
-  }
-
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    subtitle.style.color = '#f00';
   }
 
   function closeModal() {
@@ -43,20 +37,20 @@ const Education = () => {
         <button onClick={openModal}>Add New Education Page</button>
         <Modal
           isOpen={modalIsOpen}
-          onAfterOpen={afterOpenModal}
           onRequestClose={closeModal}
           style={customStyles}
           contentLabel="Example Modal"
         >
-          <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
           <button onClick={closeModal}>close</button>
-          <div>I am a modal</div>
+          <h2>Fill in your education details</h2>
           <form>
             <input />
-            <button>tab navigation</button>
-            <button>stays</button>
-            <button>inside</button>
-            <button>the modal</button>
+            <FormInput
+              type="text"
+              placeholder="Fill in your education details"
+              name={"Education"}
+              label={"Education Details"}
+            />
           </form>
         </Modal>
       </div>
