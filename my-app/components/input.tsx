@@ -10,6 +10,7 @@ const Input: ForwardRefRenderFunction<HTMLInputElement, InputProps> = ({ name, l
     return (
         <label>
             {label}
+            <br/>
             <input
                 {...otherProps}
                 name={name}

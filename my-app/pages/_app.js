@@ -1,10 +1,12 @@
 import { NameContextProvider } from "../context/state";
-
+import EducationProvider  from "../context/EducationContext";
 function Application({ Component, pageProps }) {
   return (
-    <NameContextProvider>
-      <Component {...pageProps} />
-    </NameContextProvider>
+    <EducationProvider>
+      <NameContextProvider>
+        <Component {...pageProps} />
+      </NameContextProvider>
+    </EducationProvider>
   );
 }
 
