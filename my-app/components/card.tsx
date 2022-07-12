@@ -1,5 +1,5 @@
 import { type } from "os";
-import { EducationType } from "../context/EducationContext";
+import {EducationType} from "../types/type"
 
 
 type Props={

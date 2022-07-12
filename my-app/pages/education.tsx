@@ -1,7 +1,8 @@
 import * as React from "react";
 import { useState, useContext } from "react";
 import { useAppContext } from "../context/state";
-import { EducationContext, EducationType } from "../context/EducationContext";
+import { EducationContext} from "../context/EducationContext";
+import {DateType, EducationType} from "../types/type"
 import Modal from "react-modal";
 import FormInput from "../components/input";
 import DatePicker from "react-datepicker";
@@ -39,7 +40,7 @@ const Education = () => {
   //Use the contet to receive tge educations array
   const { educations, SaveEducation } = useContext(EducationContext);
   // NOTE: this is to consume the EducationContext state and add new formData to the  state
-  const [formData, setFormData] = useState<EducationType | {}>();
+  const [formData, setFormData] = useState<EducationType | null>();
 
   const handleFormData = (e: React.FormEvent<HTMLInputElement>): void => {
     setFormData({
@@ -53,6 +54,9 @@ const Education = () => {
     SaveEducation(formData);
     closeModal()
   };
+  //Forrmat the day to to string and standard
+  const options:DateType = {year:'numeric', month: 'long', day: 'numeric'};
+  ///////////////////////////////////////////////////////////////
   return (
     <div className="user-container">
       <div>
@@ -106,7 +110,7 @@ const Education = () => {
                   setStartDate(date);
                   setFormData({
                     ...formData,
-                    startDate: startDate,
+                    startDate: startDate.toLocaleDateString([], options),
                   });
                 }}
               />
@@ -119,7 +123,7 @@ const Education = () => {
                   setEndDate(date);
                   setFormData({
                     ...formData,
-                    endDate: endDate,
+                    endDate: endDate.toLocaleDateString([], options),
                   });
                 }}
               />
@@ -132,9 +136,7 @@ const Education = () => {
         <div className="side-container"></div>
         <div className="main-container">
           {(educations).map((education: EducationType) => {
-            return (
-              (JSON.stringify(education))
-            )
+            return <Card education={education} key={education.id}/>
             }
           )}
         </div>
