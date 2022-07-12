@@ -1,8 +1,9 @@
 import { createContext, useContext, useState } from "react";
 import * as React from "react";
+import { type } from "os";
 
 
-interface EducationType {
+export interface EducationType {
   id: number;
   Education: string;
   Grade: number;
@@ -11,10 +12,17 @@ interface EducationType {
   startDate: string;
   endDate: string;
 }
+export type EducationContextType ={
+    educations: EducationType[];
+    SaveEducation: (education: EducationType) => void;
+}
+interface Props {
+    children: React.ReactNode;
+  }
 
-export const EducationContext = createContext<EducationType | null>(null);
+export const EducationContext = createContext<EducationContextType | null>(null);
 
-const EducationProvider: React.FC<React.ReactNode> = ({ children }) => {
+const EducationProvider: React.FC<Props> = ({ children }) => {
   const [educations, setEducations] = useState<EducationType[]>([
     {
       id: 1,
@@ -37,6 +45,7 @@ const EducationProvider: React.FC<React.ReactNode> = ({ children }) => {
         endDate: education.endDate
     }
     setEducations([...educations, newEducation])
+    console.log(educations)
   }
   return (
         <EducationContext.Provider value={{educations, SaveEducation}}>
