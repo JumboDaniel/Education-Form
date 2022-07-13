@@ -14,11 +14,11 @@ export default function Home() {
 
       <h1>Hi there!, Welcome to your education showcase</h1>
 
-      <div className="user-container">
+      <form className="user-container">
         <h1>Type your name and click "Enter" to begin</h1>
-        <input required={true} onChange={(e) => setName(e.target.value)} />
-        <button onClick={() => router.push('/education')}>Enter</button>
-      </div>
+        <input required onChange={(e) => setName(e.target.value)} />
+        <button type="submit" onClick={() => router.push('/education')}>Enter</button>
+      </form>
 
       <style jsx>{`
         .container {
