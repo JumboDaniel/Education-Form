@@ -5,9 +5,10 @@ export const AppContext = createContext<NameContext | null>(null);
 
 export function NameContextProvider({ children }) {
 const [name, setName] = useState<NameContext>()
+const [universities, setUniversities] = useState<NameContext>()
 
   return (
-    <AppContext.Provider value={{name, setName}}>
+    <AppContext.Provider value={{name, setName, universities, setUniversities}}>
       {children}
     </AppContext.Provider>
   );

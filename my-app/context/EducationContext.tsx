@@ -12,7 +12,7 @@ const EducationProvider: React.FC<Props> = ({ children }) => {
       id: 1,
       Education: "University of Washington",
       Grade: 4.5,
-      Degree: "Bachleors",
+      Degree: "Bachelor of Science(B.SC)",
       StudyField: "Computer Science",
       startDate: "11/4/5",
       endDate: "11/3/6",

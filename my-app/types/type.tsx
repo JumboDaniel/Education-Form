@@ -20,6 +20,8 @@ export interface Props {
 export interface NameContext{
     name: any;
     setName: any;
+    universities: any;
+    setUniversities: any;
   }
   
 export type DateType = {
