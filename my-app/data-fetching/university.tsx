@@ -40,13 +40,12 @@ export default function UniversitiesList({ handleEducation }) {
         items={universities}
         fuseOptions={{ keys: ["title"] }}
         resultStringKeyName="title" // String to display in the results
-        onSelect={(item)=> handleEducation(item.title)}
+        onSelect={(item:any)=> handleEducation(item.title)}
         onSearch={(string)=> handleEducation(string)}
         onFocus={handleOnFocus}   
         showIcon={false}
         styling={{
           height: "34px",
-          width: "34px",
           border: "1px solid darkgreen",
           borderRadius: "4px",
           backgroundColor: "white",
